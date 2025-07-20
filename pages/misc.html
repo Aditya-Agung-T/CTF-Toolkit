@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miscellaneous Tools - CTF Toolkit</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🛠️ Miscellaneous Tools</h1>
+            <p>Utility tools for various CTF tasks</p>
+        </header>
+
+        <nav class="main-nav">
+            <a href="../index.html" class="nav-item">
+                <span class="icon">🏠</span>
+                <span>Home</span>
+            </a>
+            <a href="crypto.html" class="nav-item">
+                <span class="icon">🔐</span>
+                <span>Cryptography</span>
+            </a>
+            <a href="encoding.html" class="nav-item">
+                <span class="icon">🔤</span>
+                <span>Encoding</span>
+            </a>
+            <a href="web.html" class="nav-item">
+                <span class="icon">🌐</span>
+                <span>Web Tools</span>
+            </a>
+            <a href="misc.html" class="nav-item active">
+                <span class="icon">🛠️</span>
+                <span>Miscellaneous</span>
+            </a>
+        </nav>
+
+        <main>
+            <!-- Text Case Converter -->
+            <section class="tool-section">
+                <h2>Text Case Converter</h2>
+                <div class="tool-input">
+                    <label for="caseInput">Input Text:</label>
+                    <textarea id="caseInput" placeholder="Enter text to convert..."></textarea>
+                </div>
+                <div class="tool-buttons">
+                    <button class="btn" onclick="convertCase('upper')">UPPERCASE</button>
+                    <button class="btn" onclick="convertCase('lower')">lowercase</button>
+                    <button class="btn" onclick="convertCase('title')">Title Case</button>
+                    <button class="btn" onclick="convertCase('camel')">camelCase</button>
+                    <button class="btn" onclick="convertCase('snake')">snake_case</button>
+                    <button class="btn btn-secondary" onclick="ctfToolkit.clearFields('caseInput', 'caseOutput')">Clear</button>
+                </div>
+                <div id="caseOutputSection" class="output-section hidden">
+                    <h3>Result:</h3>
+                    <div id="caseOutput" class="output-content"></div>
+                    <button class="btn copy-btn" data-target="caseOutput">Copy</button>
+                </div>
+            </section>
+
+            <!-- Reverse Text -->
+            <section class="tool-section">
+                <h2>Reverse Text</h2>
+                <div class="tool-input">
+                    <label for="reverseInput">Input Text:</label>
+                    <textarea id="reverseInput" placeholder="Enter text to reverse..."></textarea>
+                </div>
+                <div class="tool-buttons">
+                    <button class="btn" onclick="reverseText()">Reverse Characters</button>
+                    <button class="btn" onclick="reverseWords()">Reverse Words</button>
+                    <button class="btn" onclick="reverseLines()">Reverse Lines</button>
+                    <button class="btn btn-secondary" onclick="ctfToolkit.clearFields('reverseInput', 'reverseOutput')">Clear</button>
+                </div>
+                <div id="reverseOutputSection" class="output-section hidden">
+                    <h3>Result:</h3>
+                    <div id="reverseOutput" class="output-content"></div>
+                    <button class="btn copy-btn" data-target="reverseOutput">Copy</button>
+                </div>
+            </section>
+
+            <!-- Character/Word Counter -->
+            <section class="tool-section">
+                <h2>Character/Word Counter</h2>
+                <div class="tool-input">
+                    <label for="counterInput">Input Text:</label>
+                    <textarea id="counterInput" placeholder="Enter text to analyze..." oninput="updateCounter()"></textarea>
+                </div>
+                <div id="counterStats" class="counter-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Characters:</span>
+                        <span id="charCount" class="stat-value">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Characters (no spaces):</span>
+                        <span id="charCountNoSpace" class="stat-value">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Words:</span>
+                        <span id="wordCount" class="stat-value">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Lines:</span>
+                        <span id="lineCount" class="stat-value">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Paragraphs:</span>
+                        <span id="paragraphCount" class="stat-value">0</span>
+                    </div>
+                </div>
+                <div class="tool-buttons">
+                    <button class="btn btn-secondary" onclick="clearCounter()">Clear</button>
+                </div>
+            </section>
+
+            <!-- ASCII Table -->
+            <section class="tool-section">
+                <h2>ASCII Table Reference</h2>
+                <div class="ascii-controls">
+                    <button class="btn" onclick="showASCIIRange('printable')">Printable Characters</button>
+                    <button class="btn" onclick="showASCIIRange('control')">Control Characters</button>
+                    <button class="btn" onclick="showASCIIRange('extended')">Extended ASCII</button>
+                    <button class="btn" onclick="showASCIIRange('all')">Show All</button>
+                </div>
+                <div id="asciiTableContainer">
+                    <table class="ascii-table" id="asciiTable">
+                        <thead>
+                            <tr>
+                                <th>Dec</th>
+                                <th>Hex</th>
+                                <th>Oct</th>
+                                <th>Char</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody id="asciiTableBody">
+                            <!-- Table content will be generated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>CTF Toolkit v1.0 | Made by AditSinX for CTF enthusiasts</p>
+        </footer>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/utils.js"></script>
+</body>
+</html>

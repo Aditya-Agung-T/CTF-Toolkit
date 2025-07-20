@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cryptography Tools - CTF Toolkit</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔐 Cryptography Tools</h1>
+            <p>Hash generators, ciphers, and cryptographic utilities</p>
+        </header>
+
+        <nav class="main-nav">
+            <a href="../index.html" class="nav-item">
+                <span class="icon">🏠</span>
+                <span>Home</span>
+            </a>
+            <a href="crypto.html" class="nav-item active">
+                <span class="icon">🔐</span>
+                <span>Cryptography</span>
+            </a>
+            <a href="encoding.html" class="nav-item">
+                <span class="icon">🔤</span>
+                <span>Encoding</span>
+            </a>
+            <a href="web.html" class="nav-item">
+                <span class="icon">🌐</span>
+                <span>Web Tools</span>
+            </a>
+            <a href="misc.html" class="nav-item">
+                <span class="icon">🛠️</span>
+                <span>Miscellaneous</span>
+            </a>
+        </nav>
+
+        <main>
+            <!-- Hash Generator -->
+            <section class="tool-section">
+                <h2>Hash Generator</h2>
+                <div class="tool-input">
+                    <label for="hashInput">Input Text:</label>
+                    <textarea id="hashInput" placeholder="Enter text to hash..."></textarea>
+                </div>
+                <div class="tool-buttons">
+                    <button class="btn" onclick="generateHashes()">Generate All Hashes</button>
+                    <button class="btn btn-secondary" onclick="ctfToolkit.clearFields('hashInput', 'hashOutput')">Clear</button>
+                </div>
+                <div id="hashOutputSection" class="output-section hidden">
+                    <h3>Hash Results:</h3>
+                    <div id="hashOutput" class="output-content"></div>
+                    <button class="btn copy-btn" data-target="hashOutput">Copy All</button>
+                </div>
+            </section>
+
+            <!-- Caesar Cipher -->
+            <section class="tool-section">
+                <h2>Caesar Cipher</h2>
+                <div class="tool-input">
+                    <label for="caesarInput">Input Text:</label>
+                    <textarea id="caesarInput" placeholder="Enter text..."></textarea>
+                </div>
+                <div class="tool-input">
+                    <label for="caesarShift">Shift Value:</label>
+                    <input type="number" id="caesarShift" value="3" min="1" max="25">
+                </div>
+                <div class="tool-buttons">
+                    <button class="btn" onclick="caesarEncode()">Encode</button>
+                    <button class="btn" onclick="caesarDecode()">Decode</button>
+                    <button class="btn btn-secondary" onclick="ctfToolkit.clearFields('caesarInput', 'caesarOutput')">Clear</button>
+                </div>
+                <div id="caesarOutputSection" class="output-section hidden">
+                    <h3>Result:</h3>
+                    <div id="caesarOutput" class="output-content"></div>
+                    <button class="btn copy-btn" data-target="caesarOutput">Copy</button>
+                </div>
+            </section>
+
+            <!-- ROT13 -->
+            <section class="tool-section">
+                <h2>ROT13</h2>
+                <div class="tool-input">
+                    <label for="rot13Input">Input Text:</label>
+                    <textarea id="rot13Input" placeholder="Enter text..."></textarea>
+                </div>
+                <div class="tool-buttons">
+                    <button class="btn" onclick="rot13Transform()">Transform</button>
+                    <button class="btn btn-secondary" onclick="ctfToolkit.clearFields('rot13Input', 'rot13Output')">Clear</button>
+                </div>
+                <div id="rot13OutputSection" class="output-section hidden">
+                    <h3>Result:</h3>
+                    <div id="rot13Output" class="output-content"></div>
+                    <button class="btn copy-btn" data-target="rot13Output">Copy</button>
+                </div>
+            </section>
+
+            <!-- Vigenere Cipher -->
+            <section class="tool-section">
+                <h2>Vigenère Cipher</h2>
+                <div class="tool-input">
+                    <label for="vigenereInput">Input Text:</label>
+                    <textarea id="vigenereInput" placeholder="Enter text..."></textarea>
+                </div>
+                <div class="tool-input">
+                    <label for="vigenereKey">Key:</label>
+                    <input type="text" id="vigenereKey" placeholder="Enter key...">
+                </div>
+                <div class="tool-buttons">
+                    <button class="btn" onclick="vigenereEncode()">Encode</button>
+                    <button class="btn" onclick="vigenereDecode()">Decode</button>
+                    <button class="btn btn-secondary" onclick="ctfToolkit.clearFields('vigenereInput', 'vigenereKey', 'vigenereOutput')">Clear</button>
+                </div>
+                <div id="vigenereOutputSection" class="output-section hidden">
+                    <h3>Result:</h3>
+                    <div id="vigenereOutput" class="output-content"></div>
+                    <button class="btn copy-btn" data-target="vigenereOutput">Copy</button>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>CTF Toolkit v1.0 | Made by AditSinX for CTF enthusiasts</p>
+        </footer>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/crypto.js"></script>
+</body>
+</html>

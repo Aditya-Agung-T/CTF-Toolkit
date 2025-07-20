@@ -1,0 +1,379 @@
+:root {
+    --bg-primary: #0a0e27;
+    --bg-secondary: #1a1f3a;
+    --bg-card: #242b48;
+    --text-primary: #e4e4e7;
+    --text-secondary: #a1a1aa;
+    --accent: #3b82f6;
+    --accent-hover: #2563eb;
+    --success: #10b981;
+    --error: #ef4444;
+    --border: #374151;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Styles */
+header {
+    text-align: center;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2rem;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+header p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+/* Navigation Styles */
+.main-nav {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border);
+}
+
+.nav-item:hover {
+    background-color: var(--bg-card);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.nav-item.active {
+    background-color: var(--accent);
+    border-color: var(--accent);
+}
+
+.nav-item .icon {
+    font-size: 1.2rem;
+}
+
+/* Home Content Styles */
+.welcome {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.welcome h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.tool-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.category-card {
+    background-color: var(--bg-secondary);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    border-color: var(--accent);
+}
+
+.category-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--accent);
+}
+
+.category-card ul {
+    list-style: none;
+    margin-bottom: 1.5rem;
+}
+
+.category-card li {
+    padding: 0.5rem 0;
+    color: var(--text-secondary);
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.category-card li:before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+}
+
+/* Button Styles */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--accent);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+.btn-secondary {
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+}
+
+.btn-secondary:hover {
+    background-color: var(--bg-secondary);
+}
+
+/* Tool Page Styles */
+.tool-section {
+    background-color: var(--bg-secondary);
+    padding: 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    border: 1px solid var(--border);
+}
+
+.tool-section h2 {
+    margin-bottom: 1.5rem;
+    color: var(--accent);
+}
+
+.tool-input {
+    margin-bottom: 1rem;
+}
+
+.tool-input label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+}
+
+.tool-input input,
+.tool-input textarea,
+.tool-input select {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-family: 'Consolas', 'Monaco', monospace;
+}
+
+.tool-input textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.tool-input input:focus,
+.tool-input textarea:focus,
+.tool-input select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.tool-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.output-section {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background-color: var(--bg-card);
+    border-radius: 6px;
+    border: 1px solid var(--border);
+}
+
+.output-section h3 {
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+}
+
+.output-content {
+    font-family: 'Consolas', 'Monaco', monospace;
+    word-break: break-all;
+    white-space: pre-wrap;
+}
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    padding: 2rem 0;
+    border-top: 1px solid var(--border);
+    margin-top: 3rem;
+    color: var(--text-secondary);
+}
+
+/* Utility Classes */
+.hidden {
+    display: none;
+}
+
+.success {
+    color: var(--success);
+}
+
+.error {
+    color: var(--error);
+}
+
+.copy-btn {
+    position: relative;
+    background-color: var(--bg-card);
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    background: var(--accent);
+    border-radius: 4px;
+    color: white;
+    border: none;
+}
+
+
+
+
+.copy-btn:hover {
+    background-color: var(--bg-secondary);
+}
+
+.copy-feedback {
+    position: absolute;
+    top: -30px;
+    right: 0;
+    background-color: var(--success);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.copy-feedback.show {
+    opacity: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .main-nav {
+        flex-direction: column;
+    }
+    
+    .nav-item {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .tool-buttons {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* ASCII Table Styles */
+.ascii-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.ascii-table th,
+.ascii-table td {
+    padding: 0.5rem;
+    border: 1px solid var(--border);
+    text-align: center;
+}
+
+.ascii-table th {
+    background-color: var(--bg-card);
+    color: var(--accent);
+}
+
+.ascii-table tr:hover {
+    background-color: var(--bg-card);
+}
+
+/* Cheat Sheet Styles */
+.cheat-sheet {
+    background-color: var(--bg-card);
+    padding: 1rem;
+    border-radius: 6px;
+    margin-top: 1rem;
+}
+
+.cheat-sheet h4 {
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+}
+
+.cheat-sheet code {
+    display: block;
+    background-color: var(--bg-primary);
+    padding: 0.5rem;
+    border-radius: 4px;
+    margin: 0.5rem 0;
+    font-family: 'Consolas', 'Monaco', monospace;
+    color: var(--text-secondary);
+}
