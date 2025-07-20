@@ -70,4 +70,4 @@ This project is licensed under the MIT License.
 
 ## Acknowledgments
 
-Made with ❤️ for CTF enthusiasts.
+Made by AditSinX for CTF enthusiasts.
